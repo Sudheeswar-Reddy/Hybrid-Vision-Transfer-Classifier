@@ -26,5 +26,4 @@ model/*.h5
 model/*.pkl
 
 # Ignore the actual dataset images (users should provide their own)
-# This keeps your repo size small and respects data privacy
 DataSet/
