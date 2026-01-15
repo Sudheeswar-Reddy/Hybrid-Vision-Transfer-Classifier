@@ -1,6 +1,6 @@
 # Hybrid-Vision-Transfer-Classifier
 
-Achieved high-accuracy image classification by combining the spatial intelligence of **Deep Learning** with the robust decision-making of **Classical Machine Learning**. This project features a stable, reproducible architecture designed for categorical image datasets. Link of sample DataSet is provided and also it is available in this repository.
+Achieved high-accuracy image classification by combining the spatial intelligence of **Deep Learning** with the robust decision-making of **Classical Machine Learning**. This project features a stable, reproducible architecture designed for categorical image datasets. Link of sample DataSet is provided and also it is available in this repository. File named **model** is ignored as it contains trained models and varies for each **DataSet**.
 
 ---
 
