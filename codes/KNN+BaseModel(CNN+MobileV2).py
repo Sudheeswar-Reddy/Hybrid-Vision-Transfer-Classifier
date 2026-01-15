@@ -24,6 +24,7 @@ def set_seeds(seed=42):
 set_seeds(42)
 
 #PATHS
+#Enter your file paths.
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(current_dir, ".."))
 model_dir = os.path.join(project_root, "model")
