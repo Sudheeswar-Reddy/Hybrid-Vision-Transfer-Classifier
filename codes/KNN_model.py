@@ -13,7 +13,7 @@ def set_seeds(seed=42):
     np.random.seed(seed)
 set_seeds(42)
 
-project_root = r"C:\Users\WORK STATION\OneDrive\Desktop\Projects\Micro Credential Course\Hybrid-Vision-Transfer-Classifier"
+project_root = r"C:\Users\WORK STATION\OneDrive\Desktop\Projects\Micro Credential Course\Hybrid-Vision-Transfer-Classifier" #Enter your file path.
 dataset_path = os.path.join(project_root, "DataSet")
 img_height, img_width = 100, 100
 
