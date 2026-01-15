@@ -25,5 +25,5 @@ Thumbs.db
 model/*.h5
 model/*.pkl
 
-# Ignore the actual dataset images (users should provide their own)
+#Provide your own DataSet and then name it accordingly.
 DataSet/
