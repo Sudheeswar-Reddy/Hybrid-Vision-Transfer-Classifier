@@ -22,6 +22,7 @@ set_seeds(42)
 
 
 #UPDATED PATHS ONLY
+#Enter your file paths.
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(current_dir, ".."))
 dataset_path = os.path.join(project_root, "DataSet")
