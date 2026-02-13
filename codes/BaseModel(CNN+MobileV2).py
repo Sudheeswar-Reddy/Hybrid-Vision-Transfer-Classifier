@@ -1,4 +1,8 @@
 import os
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+import random
 
 os.environ['TF_DETERMINISTIC_OPS'] = '1'
 os.environ['PYTHONHASHSEED'] = '42'
@@ -8,11 +12,10 @@ from tensorflow.keras import layers, models
 from tensorflow.keras.preprocessing.image import img_to_array, load_img
 from tensorflow.keras.applications import MobileNetV2
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, mean_squared_error, mean_absolute_error, classification_report
-import numpy as np
-import random
+from sklearn.metrics import (accuracy_score, mean_squared_error, mean_absolute_error,
+                             classification_report, confusion_matrix, matthews_corrcoef,
+                             roc_curve, auc)
 
-#GLOBAL SEEDING
 def set_seeds(seed=42):
     random.seed(seed)
     np.random.seed(seed)
@@ -20,9 +23,6 @@ def set_seeds(seed=42):
 
 set_seeds(42)
 
-
-#UPDATED PATHS ONLY
-#Enter your file paths.
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(current_dir, ".."))
 dataset_path = os.path.join(project_root, "DataSet")
@@ -55,19 +55,36 @@ outputs = layers.Dense(len(class_names), activation='softmax')(x)
 model = models.Model(inputs=base_model.input, outputs=outputs)
 
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
-model.fit(X_train, y_train, epochs=10, verbose=1, shuffle=False) # shuffle=False for total consistency
+model.fit(X_train, y_train, epochs=10, verbose=1, shuffle=False)
 
-# 3. Calculate Advanced Metrics
+# 3. Calculate All Metrics
 y_probs = model.predict(X_test)
 y_pred = np.argmax(y_probs, axis=1)
 y_test_oh = tf.one_hot(y_test, depth=len(class_names)).numpy()
 
 print(f"\n--- PARENT BASIS METRICS ---")
 print(f"Accuracy: {accuracy_score(y_test, y_pred) * 100:.2f}%")
-print(f"Mean Squared Error (MSE): {mean_squared_error(y_test_oh, y_probs):.4f}")
-print(f"Mean Absolute Error (MAE): {mean_absolute_error(y_test_oh, y_probs):.4f}")
-print("\nClassification Report:\n", classification_report(y_test, y_pred, target_names=class_names))
+print(f"MCC:      {matthews_corrcoef(y_test, y_pred):.4f}")
+print(f"MSE:      {mean_squared_error(y_test_oh, y_probs):.4f}")
+print(f"MAE:      {mean_absolute_error(y_test_oh, y_probs):.4f}")
+print("\nClassification Report (includes F1-Score):\n", classification_report(y_test, y_pred, target_names=class_names))
 
-# Save
+# VISUALIZATION: Confusion Matrix
+cm = confusion_matrix(y_test, y_pred)
+plt.figure(figsize=(8, 6))
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=class_names, yticklabels=class_names)
+plt.title('Confusion Matrix: Base Model')
+plt.show()
+
+# VISUALIZATION: ROC Curve
+plt.figure(figsize=(8, 6))
+for i in range(len(class_names)):
+    fpr, tpr, _ = roc_curve(y_test_oh[:, i], y_probs[:, i])
+    plt.plot(fpr, tpr, label=f'{class_names[i]} (AUC = {auc(fpr, tpr):.2f})')
+plt.plot([0, 1], [0, 1], 'k--')
+plt.title('ROC Curve: Base Model')
+plt.legend()
+plt.show()
+
 feature_extractor = models.Model(inputs=model.input, outputs=x)
 feature_extractor.save(os.path.join(model_dir, "mango_basis_extractor.h5"))
