@@ -20,7 +20,14 @@ Hybrid-Vision-Transfer-Classifier/
 │
 ├── results/                      # Performance reports & analysis
 │   ├── Results_BaseModel(CNN+MobileV2).pdf
-│   └── Results_HybridModel(KNN+BaseModel).pdf
+│   ├── Results_HybridModel(KNN+BaseModel).pdf
+│   ├── Results_PureKNN.pdf
+│   ├── ConfusionMatrix(BaseModel).png
+│   ├── ConfusionMatrix(HybridModel).png
+│   ├── ConfusionMatrix(KNN_model).png
+│   ├── ROC(BaseModel).png
+│   ├── ROC(HybridModel).png
+│   └── ROC(KNNModel).png
 │
 ├── DataSet/                      # Categorical image dataset folders
 │   ├── Anthracnose/
@@ -65,27 +72,81 @@ The `KNN+BaseModel(CNN+MobileV2).py` script combines the best of both worlds. It
 To ensure professional-grade reliability and academic integrity, this project is **100% deterministic**.
 
 - **Global Seeding:** All scripts use `RandomSeed=42` across NumPy, TensorFlow, and Python's internal random module to ensure identical results on every run.
-- **Metrics:** The model evaluates performance using **Accuracy**, **Mean Squared Error (MSE)**, and **Mean Absolute Error (MAE)**.
+
+### Evaluation Metrics
+
+Each model is rigorously evaluated using the following metrics:
+
+#### 1. **Accuracy**
+Overall classification correctness - the percentage of correctly classified images across all disease categories.
+
+#### 2. **Mean Squared Error (MSE)**
+Measures the average squared difference between predicted probabilities and true labels. Lower MSE indicates better model calibration and confidence in predictions.
+
+#### 3. **Mean Absolute Error (MAE)**
+Average absolute difference between predictions and actual values. Provides a straightforward measure of prediction error magnitude.
+
+#### 4. **Matthews Correlation Coefficient (MCC)**
+A balanced metric that accounts for class imbalances, ranging from -1 to +1. Values closer to +1 indicate better prediction quality across all classes, making it particularly useful for imbalanced datasets.
+
+#### 5. **Classification Report (Precision, Recall, F1-Score)**
+Per-class performance breakdown:
+- **Precision:** Proportion of correct positive predictions for each disease class
+- **Recall:** Proportion of actual positives correctly identified
+- **F1-Score:** Harmonic mean of precision and recall, providing a single balanced metric
+
+#### 6. **Confusion Matrix**
+Visual heatmap showing the distribution of predictions across all 8 disease categories. Each cell shows the count of images predicted as a particular class versus their actual class, making it easy to identify misclassification patterns.
+
+Separate confusion matrices are generated for:
+- `ConfusionMatrix(BaseModel)` - CNN+MobileNetV2 performance
+- `ConfusionMatrix(HybridModel)` - Hybrid KNN+CNN performance  
+- `ConfusionMatrix(KNN_model)` - Pure KNN performance
+
+#### 7. **ROC-AUC Curves**
+Receiver Operating Characteristic curves with Area Under Curve (AUC) values for each disease class. ROC curves plot the True Positive Rate against False Positive Rate at various classification thresholds. AUC values closer to 1.0 indicate excellent class separation.
+
+Individual ROC curves are available for:
+- `ROC(BaseModel)` - Multi-class ROC analysis for CNN model
+- `ROC(HybridModel)` - Multi-class ROC analysis for Hybrid model
+- `ROC(KNNModel)` - Multi-class ROC analysis for Pure KNN
+
 - **Locked Architecture:** The Hybrid model is designed to be "locked and stable," providing a consistent baseline for comparison.
-- **Detailed Reports:** Performance analysis and evaluation metrics for both CNN and Hybrid models are available in the `results/` folder as comprehensive PDF reports.
+- **Detailed Reports:** Performance analysis and evaluation metrics for both CNN and Hybrid models are available in the `results/` folder as comprehensive PDF reports and visualization images.
 
 ---
 
 ## 📈 Results & Analysis
 
-Comprehensive performance reports are available in the `results/` directory:
+Comprehensive performance reports and visualizations are available in the `results/` directory:
 
+### PDF Reports
 - **📄 Results_BaseModel(CNN+MobileV2).pdf** - Complete analysis of the pure deep learning approach
 - **📄 Results_HybridModel(KNN+BaseModel).pdf** - Detailed evaluation of the hybrid KNN+CNN model
+- **📄 Results_PureKNN.pdf** - Performance analysis of the pure KNN classifier
 
-Both reports include:
-- Confusion matrices
-- Classification reports (Precision, Recall, F1-Score)
-- Accuracy metrics across all 8 disease categories
-- Training/validation performance curves
-- Model comparison and insights
+### Visualization Files
 
-📁 **View Reports:** Navigate to the `/results` folder for detailed PDF documentation.
+**Confusion Matrices:**
+- `ConfusionMatrix(BaseModel).png` - Visual accuracy breakdown for CNN+MobileNetV2
+- `ConfusionMatrix(HybridModel).png` - Prediction distribution for Hybrid model
+- `ConfusionMatrix(KNN_model).png` - Classification patterns for Pure KNN
+
+**ROC Curves:**
+- `ROC(BaseModel).png` - Multi-class ROC-AUC curves for Base CNN model
+- `ROC(HybridModel).png` - ROC analysis for Hybrid KNN+CNN model
+- `ROC(KNNModel).png` - ROC performance curves for Pure KNN
+
+Each report and visualization includes:
+- **Accuracy** - Overall correctness percentage
+- **Confusion Matrix** - Heatmap of predictions vs actual classes
+- **Classification Report** - Precision, Recall, F1-Score for each of the 8 disease categories
+- **ROC-AUC Curves** - Class-wise discrimination performance with AUC values
+- **Matthews Correlation Coefficient (MCC)** - Balanced performance measure
+- **MSE and MAE** - Prediction error metrics
+- **Model Comparison** - Insights on relative performance
+
+📁 **View Reports:** Navigate to the `/results` folder for detailed PDF documentation and visualization images.
 
 ---
 
