@@ -83,4 +83,4 @@ The scripts print metrics and show plots; they do **not** automatically export t
 
 This is a student experiment on a labelled leaf-image dataset. It has not been validated as a field diagnostic system. Seeds are set to 42, but image enumeration is unsorted, dependency versions are open-ended, and hardware and TensorFlow operations may affect the outcome. Preserve a rerun as its own experiment rather than replacing the recorded numbers.
 
-The source code, dataset, original result artifacts and [LICENCE](LICENCE) are unchanged. See the licence file for the project's non-commercial and commercial terms.
+The source code, dataset, original result artifacts and [LICENSE](LICENSE) are unchanged. See the licence file for the project's non-commercial and commercial terms.
