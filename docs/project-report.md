@@ -82,4 +82,4 @@ A stronger follow-up would save one shared test list, pin the environment, compa
 
 The useful finding is the gap between raw pixels and pretrained features. The hybrid keeps the final classification step simple and performs well, while the base softmax remains stronger on the saved accuracy measure. Keeping the findings together with the original evidence makes the project easier to understand and build on.
 
-Team details are in [CONTRIBUTORS.md](../CONTRIBUTORS.md); usage terms remain in [LICENSE](../LICENSE).
+Team details are in [CONTRIBUTORS.md](../CONTRIBUTORS.md); usage terms remain in [LICENSE.md](../LICENSE.md).
