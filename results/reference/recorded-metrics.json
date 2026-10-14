@@ -1,0 +1,33 @@
+{
+  "source": "Transcribed from existing console-output PDFs; not a new evaluation.",
+  "recorded_run_date": "2026-02-13",
+  "models": [
+    {
+      "model": "MobileNetV2 + softmax",
+      "accuracy_percent": 99.12,
+      "mcc": 0.99,
+      "mse": 0.0023,
+      "mae": 0.0079,
+      "test_images": 800,
+      "source": "results/Results_BaseModel(CNN+MobileV2).pdf"
+    },
+    {
+      "model": "MobileNetV2 features + KNN",
+      "accuracy_percent": 98.25,
+      "mcc": 0.9801,
+      "mse": 0.0032,
+      "mae": 0.0058,
+      "test_images": 800,
+      "source": "results/Results_HybridModel(KNN+BaseModel).pdf"
+    },
+    {
+      "model": "Raw-pixel KNN",
+      "accuracy_percent": 68.12,
+      "mcc": 0.638,
+      "mse": 0.0523,
+      "mae": 0.0847,
+      "test_images": 800,
+      "source": "results/Results_PureKNN.pdf"
+    }
+  ]
+}

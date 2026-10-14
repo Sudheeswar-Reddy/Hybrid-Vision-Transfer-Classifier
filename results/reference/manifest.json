@@ -1,0 +1,68 @@
+{
+  "source_commit": "dd9c9f2d3be0d5330adb1ef40cac55b0d44ff500",
+  "preserved_on": "2026-10-14",
+  "description": "Existing artifacts preserved without rerunning training. SHA-256 values describe the original file bytes.",
+  "results": [
+    {
+      "path": "results/ConfusionMatrix(BaseModel).png",
+      "bytes": 46593,
+      "sha256": "6ed4e1aacee5a06c7750908600530038c9a0124b338ffa63a906a794ff2998c0"
+    },
+    {
+      "path": "results/ConfusionMatrix(HybridModel).png",
+      "bytes": 36803,
+      "sha256": "5d033afc91a93ee70bdf117c4c535aa03cbcfcf84383771674fcd9b53c4921c4"
+    },
+    {
+      "path": "results/ConfusionMatrix(KNN model).png",
+      "bytes": 40049,
+      "sha256": "212ea2a9797b41f05c753cbef6250deeae48862bd1da71f729463156e14beb88"
+    },
+    {
+      "path": "results/Results_BaseModel(CNN+MobileV2).pdf",
+      "bytes": 562795,
+      "sha256": "d9a0e4f8c28961679c3d618dcac7137f8f08c6867510ce2f8a70973dd6aaadbb"
+    },
+    {
+      "path": "results/Results_HybridModel(KNN+BaseModel).pdf",
+      "bytes": 342210,
+      "sha256": "1baaf60c878aae56b4181543177dcc239048ed841e2d32a876f357f4426b9354"
+    },
+    {
+      "path": "results/Results_PureKNN.pdf",
+      "bytes": 327788,
+      "sha256": "d5ecca4132eaf627f1d81719d0804679ef5c3f7711890957c3233014d1fc714e"
+    },
+    {
+      "path": "results/ROC(BaseModel).png",
+      "bytes": 41941,
+      "sha256": "44dc20351fbf1090ac628839e7494403ff99791718b1b9c2b9fa337c6d3cfe07"
+    },
+    {
+      "path": "results/ROC(HybridModel).png",
+      "bytes": 44297,
+      "sha256": "8b64db080815f3078d4ce3f6da45fa1c3d028c59ec2d15ec501a28a0033a820d"
+    },
+    {
+      "path": "results/ROC(KNNModel).png",
+      "bytes": 67973,
+      "sha256": "42c2238802e19287ad2f6a5129ed8b509b552d4e1c7548c7800ca93bdef9e33b"
+    }
+  ],
+  "code": [
+    {
+      "path": "codes/BaseModel(CNN+MobileV2).py",
+      "sha256": "9a20932d2d3d64a53480a1f190381df9f7642012959ecb19809cc61f42b9cc44"
+    },
+    {
+      "path": "codes/KNN+BaseModel(CNN+MobileV2).py",
+      "sha256": "a1f86f77c5853df3b9a52d32192fa9a94ada5ba1ca541b781b6bf79fec816417"
+    },
+    {
+      "path": "codes/KNN_model.py",
+      "sha256": "f27cd5fc75ea7acc8332c98591205f93f467fb79e160f49a62a282f6ede0472f"
+    }
+  ],
+  "dataset_tree": "9e04cad7b928f8fb2a3e40a6968f76a5b2ca9714",
+  "model_weights_present": false
+}
